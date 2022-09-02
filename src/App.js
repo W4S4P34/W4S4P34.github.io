@@ -1,7 +1,32 @@
-import "./index.css";
+// Common Components
+import { Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+
+// Self-defined Components
+import Loading from "./components/Loading";
+
+// Self-defined Resources
+import routes from "./pages/routes";
 
 const App = () => {
-  return <div className="App">Hello, W4S4P34!</div>;
+  return (
+    <Routes>
+      {routes.map(({ path, element: Component, props, ...rest }) => {
+        return (
+          <Route
+            key={path}
+            {...rest}
+            path={path}
+            element={
+              <Suspense fallback={<Loading />}>
+                <Component {...props} />
+              </Suspense>
+            }
+          />
+        );
+      })}
+    </Routes>
+  );
 };
 
 export default App;
