@@ -1,4 +1,5 @@
 // Common Components
+import $ from "jquery";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 
@@ -22,7 +23,22 @@ const Doors = () => {
         id="door"
         className="flex flex-col gap-y-4 justify-center items-center"
       >
-        <Link id="label" to={getLinkFromName(props.name)}>
+        <Link
+          id="label"
+          to={getLinkFromName(props.name)}
+          onMouseEnter={(e) => {
+            $(e.currentTarget)
+              .siblings("a#image")
+              .find("img")
+              .attr("src", DoorOpenedImage);
+          }}
+          onMouseLeave={(e) =>
+            $(e.currentTarget)
+              .siblings("a#image")
+              .find("img")
+              .attr("src", DoorClosedImage)
+          }
+        >
           {props.name}
         </Link>
         <Link id="image" to={getLinkFromName(props.name)}>
