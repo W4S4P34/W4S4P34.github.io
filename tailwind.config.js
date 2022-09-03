@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} **/
 module.exports = {
   content: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: false,
   theme: {
     colors: {
       "rainbow-indigo": "#1E3F66",
