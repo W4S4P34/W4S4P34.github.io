@@ -1,3 +1,5 @@
-const NoMatch = () => <div>NoMatch</div>;
+const NoMatch = () => {
+  return <div>NoMatch</div>;
+};
 
 export default NoMatch;

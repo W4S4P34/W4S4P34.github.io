@@ -39,8 +39,11 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.8",
+    "classnames": "^2.3.1",
     "gh-pages": "^4.0.0",
     "jquery": "^3.6.1",
+    "postcss": "^8.4.16",
     "react-router-dom": "^6.3.0",
     "react-spring": "^9.5.2",
     "tailwindcss": "^3.1.8"

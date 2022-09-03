@@ -1,5 +1,32 @@
-#root {
-  font-family: "Silkscreen", cursive;
-  font-smooth: never;
-  -webkit-font-smoothing: none;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .end-cursor::after {
+    content: "_";
+  }
+
+  .end-cursor.blinking-fx::after {
+    animation: blink 1s step-start infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+html {
+  /* Sizes */
+  @apply w-screen h-screen;
+  @apply min-w-full min-h-full;
+}
+
+body {
+  /* Sizes */
+  @apply min-w-fit min-h-fit;
+  /* Formats */
+  @apply bg-rainbow-indigo text-beau-blue font-pixel;
 }
