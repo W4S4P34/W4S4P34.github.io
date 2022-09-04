@@ -17,7 +17,7 @@ const Script = () => {
   return (
     <div
       id="script"
-      className={classnames("text-center", "select-none", {
+      className={classnames("mt-4", "text-center", "select-none", {
         "end-cursor": typedPhase !== TypedPhase.Deleting,
         "blinking-fx": typedPhase === TypedPhase.Pausing,
       })}
@@ -38,7 +38,10 @@ const Doors = () => {
     };
 
     return (
-      <div id="door" className="flex flex-col gap-y-4 items-center">
+      <div
+        id="door"
+        className="flex flex-col gap-y-4 justify-center items-center"
+      >
         <Link
           id="label"
           to={getLinkFromName(props.name)}
@@ -73,7 +76,7 @@ const Doors = () => {
   return (
     <div
       id="doors"
-      className="flex flex-col sm:flex-row sm:w-4/5 gap-x-20 gap-y-20 justify-center items-center"
+      className="flex flex-col sm:flex-row sm:w-4/5 my-8 gap-x-20 gap-y-20 justify-center items-center"
     >
       {doors.map((door) => {
         return <Door key={door} name={door} />;
@@ -84,7 +87,9 @@ const Doors = () => {
 
 const PassCode = () => {
   return (
-    <div className="text-rainbow-indigo text-center">05I&#37;AM&#37;HERE19</div>
+    <div className="mb-4 text-rainbow-indigo text-center">
+      05I&#37;AM&#37;HERE19
+    </div>
   );
 };
 
@@ -92,7 +97,7 @@ const Home = () => {
   return (
     <div
       id="home"
-      className="flex flex-col flex-auto p-4 gap-y-8 justify-between items-center"
+      className="flex flex-col flex-auto justify-between items-center"
     >
       <Script />
       <Doors />
