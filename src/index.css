@@ -18,15 +18,21 @@
   }
 }
 
-html {
-  /* Sizes */
-  @apply w-screen h-screen;
-  @apply min-w-full min-h-full;
+html,
+body {
+  /* Margins & Paddings */
+  @apply m-0 p-0;
 }
 
-body {
-  /* Sizes */
-  @apply min-w-fit min-h-fit;
+html {
   /* Formats */
   @apply bg-rainbow-indigo text-beau-blue font-pixel;
+}
+
+#root {
+  /* Display */
+  @apply flex flex-col;
+  /* Sizes */
+  @apply w-screen h-screen;
+  @apply min-w-fit min-h-fit;
 }
