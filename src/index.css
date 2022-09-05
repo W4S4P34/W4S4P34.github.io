@@ -33,10 +33,13 @@ body,
 
 html {
   /* Formats */
-  @apply bg-rainbow-indigo text-beau-blue font-pixel;
+  @apply bg-rainbow-indigo text-beau-blue font-pixel whitespace-normal tracking-wider;
 }
 
 #root {
   /* Display */
   @apply flex flex-col;
+  /* Behaviours */
+  @apply scroll-smooth;
+  @apply snap-mandatory snap-y overflow-y-scroll;
 }

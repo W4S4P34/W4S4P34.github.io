@@ -1,18 +1,30 @@
 // Common Components
+import { createContext, useRef, useEffect } from "react";
+
+// Self-defined Components
+import OptionSection from "./components/OptionSection";
+import ObjectSection from "./components/ObjectSection";
+
+export const SectionContext = createContext(null);
 
 const About = () => {
+  const FirstSectionRef = useRef(null);
+  const SecondSectionRef = useRef(null);
+
+  useEffect(() => {
+    FirstSectionRef.current.scrollIntoView();
+  }, []);
+
   return (
-    <div
-      id="about"
-      className="flex flex-col flex-auto justify-between items-center"
-    >
-      <div id="about-scripts" className="flex h-screen items-center">
-        Scripts
+    <SectionContext.Provider value={{ FirstSectionRef, SecondSectionRef }}>
+      <div
+        id="about"
+        className="flex flex-col flex-auto justify-between items-center"
+      >
+        <OptionSection className="snap-center" ref={FirstSectionRef} />
+        <ObjectSection className="snap-center" ref={SecondSectionRef} />
       </div>
-      <div id="about-objects" className="flex h-screen items-center">
-        Objects
-      </div>
-    </div>
+    </SectionContext.Provider>
   );
 };
 

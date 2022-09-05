@@ -1,4 +1,4 @@
-// Common Components
+// React
 import { useEffect, useState } from "react";
 
 export const TypedPhase = {
@@ -11,7 +11,7 @@ const TYPING_INTERVAL = 75;
 const PAUSING_INTERVAL = 2500;
 const DELETING_INTERVAL = 50;
 
-const useTypedScript = (texts) => {
+const useTypedScript = (texts, loop = true) => {
   const [typedScript, setTypedScript] = useState("");
   const [typedIndex, setTypedIndex] = useState(0);
   const [typedPhase, setTypedPhase] = useState(TypedPhase.Typing);
@@ -47,12 +47,13 @@ const useTypedScript = (texts) => {
       }
       case TypedPhase.Pausing:
       default:
+        if (loop === false && typedIndex === texts.length - 1) return;
         const timeout = setTimeout(() => {
           setTypedPhase(TypedPhase.Deleting);
         }, PAUSING_INTERVAL);
         return () => clearTimeout(timeout);
     }
-  }, [texts, typedScript, typedIndex, typedPhase]);
+  }, [texts, loop, typedScript, typedIndex, typedPhase]);
 
   return { typedScript, typedPhase };
 };

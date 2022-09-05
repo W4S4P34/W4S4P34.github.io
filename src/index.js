@@ -1,10 +1,12 @@
-// Common Components
-import $ from "jquery";
+// React
 import React from "react";
 import ReactDOM from "react-dom/client";
+
+// Libraries
+import $ from "jquery";
 import { BrowserRouter } from "react-router-dom";
 
-// Pages
+// Self-defined Components
 import App from "./App";
 
 // CSS

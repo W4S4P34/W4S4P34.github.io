@@ -1,11 +1,13 @@
-// Common Components
+// React
 import { Suspense } from "react";
+
+// Libraries
 import { Routes, Route } from "react-router-dom";
 
 // Self-defined Components
 import Loading from "./components/Loading";
 
-// Self-defined Resources
+// Resources
 import routes from "./pages/routes";
 
 const App = () => {
