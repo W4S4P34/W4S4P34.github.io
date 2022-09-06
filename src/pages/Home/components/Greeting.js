@@ -12,7 +12,7 @@ const Greeting = () => {
   return (
     <div
       id="greeting"
-      className={classnames("mx-4 mt-4 text-center select-none", {
+      className={classnames("w-full my-4 px-4 text-center select-none", {
         "end-cursor": typedPhase !== TypedPhase.Deleting,
         "blinking-fx": typedPhase === TypedPhase.Pausing,
       })}

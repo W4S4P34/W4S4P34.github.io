@@ -7,7 +7,7 @@ const Option = (props) => {
   return (
     <div
       id="option"
-      className="mt-2 text-cyan-azure hover:text-beau-blue text-left select-none"
+      className="p-2 text-cyan-azure hover:text-beau-blue"
       onClick={props.onClick}
       onPointerEnter={() => setIsHovered(true)}
       onPointerLeave={() => setIsHovered(false)}

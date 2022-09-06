@@ -15,10 +15,10 @@ const Options = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="options" className="mx-4 mb-4">
+    <div id="options" className="my-4 px-4 text-left">
       <Option
         option="Good, lemme figure out who you are"
-        onClick={() => sections.SecondSectionRef.current.scrollIntoView()}
+        onClick={() => sections.secondSectionRef.current.scrollIntoView()}
       />
       <Option
         option="Nope, I will be back later"

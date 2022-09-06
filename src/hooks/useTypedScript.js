@@ -11,7 +11,13 @@ const TYPING_INTERVAL = 75;
 const PAUSING_INTERVAL = 2500;
 const DELETING_INTERVAL = 50;
 
-const useTypedScript = (texts, loop = true) => {
+const useTypedScript = (
+  texts,
+  loop = true,
+  typingInterval = TYPING_INTERVAL,
+  pausingInterval = PAUSING_INTERVAL,
+  deletingInterval = DELETING_INTERVAL
+) => {
   const [typedScript, setTypedScript] = useState("");
   const [typedIndex, setTypedIndex] = useState(0);
   const [typedPhase, setTypedPhase] = useState(TypedPhase.Typing);
@@ -26,7 +32,7 @@ const useTypedScript = (texts, loop = true) => {
         }
         const timeout = setTimeout(() => {
           setTypedScript(nextScript);
-        }, TYPING_INTERVAL);
+        }, typingInterval);
         return () => clearTimeout(timeout);
       }
       case TypedPhase.Deleting: {
@@ -42,7 +48,7 @@ const useTypedScript = (texts, loop = true) => {
         );
         const timeout = setTimeout(() => {
           setTypedScript(nextRemaining);
-        }, DELETING_INTERVAL);
+        }, deletingInterval);
         return () => clearTimeout(timeout);
       }
       case TypedPhase.Pausing:
@@ -50,10 +56,19 @@ const useTypedScript = (texts, loop = true) => {
         if (loop === false && typedIndex === texts.length - 1) return;
         const timeout = setTimeout(() => {
           setTypedPhase(TypedPhase.Deleting);
-        }, PAUSING_INTERVAL);
+        }, pausingInterval);
         return () => clearTimeout(timeout);
     }
-  }, [texts, loop, typedScript, typedIndex, typedPhase]);
+  }, [
+    texts,
+    loop,
+    typingInterval,
+    pausingInterval,
+    deletingInterval,
+    typedScript,
+    typedIndex,
+    typedPhase,
+  ]);
 
   return { typedScript, typedPhase };
 };

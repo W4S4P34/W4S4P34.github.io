@@ -16,10 +16,7 @@ const Door = (props) => {
   };
 
   return (
-    <div
-      id="door"
-      className="flex flex-col gap-y-4 justify-center items-center"
-    >
+    <div id="door" className="flex flex-col justify-center items-center">
       <Link
         id="label"
         to={getLinkFromName(props.name)}
@@ -29,7 +26,7 @@ const Door = (props) => {
         onPointerLeave={() => {
           doorRef.current.setAttribute("src", DoorClosedImage);
         }}
-        className="text-center select-none"
+        className="w-full p-4"
       >
         {props.name}
       </Link>
@@ -44,7 +41,7 @@ const Door = (props) => {
             (event.currentTarget.src = DoorClosedImage)
           }
           alt={props.name.concat(" Door")}
-          className="w-32 h-28 object-scale-down select-none"
+          className="w-32 h-28 object-scale-down"
         />
       </Link>
     </div>

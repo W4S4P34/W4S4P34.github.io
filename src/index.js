@@ -12,7 +12,7 @@ import App from "./App";
 // CSS
 import "./index.css";
 
-const root = ReactDOM.createRoot($("#root")[0]);
+const root = ReactDOM.createRoot($("#root").get(0));
 root.render(
   <React.StrictMode>
     <BrowserRouter>

@@ -33,13 +33,20 @@ body,
 
 html {
   /* Formats */
-  @apply bg-rainbow-indigo text-beau-blue font-pixel whitespace-normal tracking-wider;
+  @apply bg-rainbow-indigo text-beau-blue font-pixel tracking-wider whitespace-normal;
 }
 
 #root {
   /* Display */
   @apply flex flex-col;
+}
+
+.about-page-smooth {
   /* Behaviours */
   @apply scroll-smooth;
+}
+
+.about-page-snap {
+  /* Behaviours */
   @apply snap-mandatory snap-y overflow-y-scroll;
 }

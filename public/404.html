@@ -11,26 +11,27 @@
     <!-- JS -->
     <script type="text/javascript">
       var pathSegmentsToKeep = 0;
-
-      var l = window.location;
-      l.replace(
-        l.protocol +
+      var path = window.location;
+      path.replace(
+        path.protocol +
           "//" +
-          l.hostname +
-          (l.port ? ":" + l.port : "") +
-          l.pathname
+          path.hostname +
+          (path.port ? ":" + path.port : "") +
+          path.pathname
             .split("/")
             .slice(0, 1 + pathSegmentsToKeep)
             .join("/") +
           "/?/" +
-          l.pathname
+          path.pathname
             .slice(1)
             .split("/")
             .slice(pathSegmentsToKeep)
             .join("/")
             .replace(/&/g, "~and~") +
-          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
-          l.hash
+          (path.search
+            ? "&" + path.search.slice(1).replace(/&/g, "~and~")
+            : "") +
+          path.hash
       );
     </script>
   </head>

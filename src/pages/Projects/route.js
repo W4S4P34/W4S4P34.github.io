@@ -1,3 +1,4 @@
+// React
 import { lazy } from "react";
 
 const route = {
