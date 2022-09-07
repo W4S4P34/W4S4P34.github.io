@@ -1,5 +1,12 @@
 const CV = () => {
-  return <div>CV</div>;
+  return (
+    <div
+      id="cv"
+      className="flex flex-col flex-auto justify-center items-center"
+    >
+      CV
+    </div>
+  );
 };
 
 export default CV;

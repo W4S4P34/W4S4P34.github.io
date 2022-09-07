@@ -1,5 +1,5 @@
 // React
-import { createContext, useRef, useEffect, useCallback } from "react";
+import { createContext, useEffect, useRef, useCallback } from "react";
 
 // Libraries
 import $ from "jquery";
@@ -10,6 +10,7 @@ import ObjectSection from "./components/ObjectSection";
 
 const getViewportBounds = () => {
   let viewportBounds = {};
+
   viewportBounds.width =
     window.innerWidth || document.documentElement.clientWidth;
   viewportBounds.height =
@@ -23,6 +24,7 @@ const getViewportBounds = () => {
 
 const getElementBounds = (element) => {
   let elementBounds = {};
+
   const rect = element.getBoundingClientRect();
   elementBounds.width = Math.trunc(rect.width);
   elementBounds.height = Math.trunc(rect.height);
@@ -36,6 +38,7 @@ const getElementBounds = (element) => {
 const isInsideViewport = (element) => {
   const viewport = getViewportBounds();
   const rect = getElementBounds(element);
+
   return (
     rect.x1 < viewport.width &&
     rect.x2 > 0 &&
@@ -44,21 +47,27 @@ const isInsideViewport = (element) => {
   );
 };
 
-const getInsideViewportPercentage = (element) => {
+const getInsideViewportPercentage = ({ element, increaseSpeed = 1 }) => {
   const viewport = getViewportBounds();
   const rect = getElementBounds(element);
+
   if (!isInsideViewport(element)) {
     return 0;
   } else {
     return (
       (rect.height -
-        Math.max(
+        clampValue(
+          Math.abs(viewport.y2 - rect.y2) * increaseSpeed,
           0,
-          Math.min(Math.abs(viewport.y2 - rect.y2) * 3, rect.height)
+          rect.height
         )) /
       rect.height
     ).toFixed(2);
   }
+};
+
+const clampValue = (value, min, max) => {
+  return Math.max(min, Math.min(value, max));
 };
 
 export const SectionContext = createContext(null);
@@ -67,33 +76,36 @@ const About = () => {
   const firstSectionRef = useRef(null);
   const secondSectionRef = useRef(null);
 
-  const onVisibilityChange = useCallback(() => {
-    const firstSectionVisibilityPercentage = getInsideViewportPercentage(
-      firstSectionRef.current
-    );
-    const secondSectionVisibilityPercentage = getInsideViewportPercentage(
-      secondSectionRef.current
-    );
+  const handleVisibilityChange = useCallback(() => {
+    const firstSectionVisibilityPercentage = getInsideViewportPercentage({
+      element: firstSectionRef.current,
+      increaseSpeed: 3,
+    });
+    const secondSectionVisibilityPercentage = getInsideViewportPercentage({
+      element: secondSectionRef.current,
+      increaseSpeed: 3,
+    });
 
-    $("#option-section").css({ opacity: firstSectionVisibilityPercentage });
-    $("#object-section").css({ opacity: secondSectionVisibilityPercentage });
+    firstSectionRef.current.style.opacity = firstSectionVisibilityPercentage;
+    secondSectionRef.current.style.opacity = secondSectionVisibilityPercentage;
   }, []);
 
   useEffect(() => {
-    $(window).on("DOMContentLoaded load resize", onVisibilityChange);
-    $("#root").on("scroll", onVisibilityChange);
+    $(window).on("DOMContentLoaded load resize scroll", handleVisibilityChange);
+    $("#root").on("scroll", handleVisibilityChange);
 
     $("#root").addClass("about-page-snap");
     firstSectionRef.current.scrollIntoView();
     $("#root").addClass("about-page-smooth");
 
     return () => {
-      $(window).off("DOMContentLoaded load resize", onVisibilityChange);
-      $("#root").off("scroll", onVisibilityChange);
+      $(window).off("DOMContentLoaded load resize", handleVisibilityChange);
+      $("#root").off("scroll", handleVisibilityChange);
+
       $("#root").removeClass("about-page-snap");
       $("#root").removeClass("about-page-smooth");
     };
-  }, [onVisibilityChange]);
+  }, [handleVisibilityChange]);
 
   return (
     <SectionContext.Provider value={{ firstSectionRef, secondSectionRef }}>
@@ -102,22 +114,22 @@ const About = () => {
         className="flex flex-col flex-auto justify-between items-center"
       >
         <OptionSection
+          ref={firstSectionRef}
           id="option-section"
           className="
             flex flex-col
             w-full h-screen p-4
-            justify-center items-center text-center select-none snap-center
+            justify-center items-center snap-center
           "
-          ref={firstSectionRef}
         />
         <ObjectSection
+          ref={secondSectionRef}
           id="object-section"
           className="
-            grid grid-rows-3 grid-cols-3 relative
-            w-full h-screen p-4 gap-8
-            justify-center items-center text-center select-none snap-center
+            grid grid-rows-3 grid-cols-3
+            relative w-full h-screen p-4 gap-8
+            justify-center items-center snap-center select-none
           "
-          ref={secondSectionRef}
         />
       </div>
     </SectionContext.Provider>

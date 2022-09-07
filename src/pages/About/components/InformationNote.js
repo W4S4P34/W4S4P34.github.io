@@ -1,12 +1,27 @@
+// React
+import { useEffect } from "react";
+
+// Libraries
+import $ from "jquery";
+import classnames from "classnames";
+
 const InformationNote = (props) => {
+  useEffect(() => {
+    if (props.visibility) {
+      $("#root").addClass("lock-scroll");
+    } else {
+      $("#root").removeClass("lock-scroll");
+    }
+  });
+
   return (
     <div
-      className={`
-            absolute top-[50%] left-[50%]
-            translate-x-[-50%] translate-y-[-50%]
-            w-full h-full
-            ${props.hidden ? "hidden" : ""}      
-        `}
+      className={classnames(
+        "absolute top-[50%] left-[50%]",
+        "translate-x-[-50%] translate-y-[-50%]",
+        "w-full h-full",
+        props.visibility ? "" : "hidden"
+      )}
     >
       <div
         className="
@@ -16,7 +31,7 @@ const InformationNote = (props) => {
           bg-metallic-blue opacity-50
         "
         onClick={props.onClick}
-      ></div>
+      />
       <div
         className="
           absolute top-[50%] left-[50%]
@@ -33,12 +48,12 @@ const InformationNote = (props) => {
             w-full h-full overflow-y-auto
             items-center 
             text-left whitespace-pre-wrap
-        "
+          "
         >
           {props.text}
           {props.children}
         </div>
-        <div className="mt-4 text-cyan-azure">
+        <div className="mt-4 text-cyan-azure text-center">
           Click anywhere outside this note to close
         </div>
       </div>

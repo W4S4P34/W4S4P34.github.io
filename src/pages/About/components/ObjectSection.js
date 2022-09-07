@@ -10,18 +10,21 @@ import Tool from "./Tool";
 import DigitalClock from "./DigitalClock";
 import InformationNote from "./InformationNote";
 
-// Resources
-import LockedBox from "../../../assets/Portfolio-LockedBox.png";
-import Computer from "../../../assets/Portfolio-Computer.gif";
-import Projects from "../../../assets/Portfolio-Projects.png";
-import Clock from "../../../assets/Portfolio-DigitalClock.png";
-import CVPaper from "../../../assets/Portfolio-CV.png";
-import BachelorHat from "../../../assets/Portfolio-BachelorHat.png";
+// Assets
+import LockedBoxImage from "../../../assets/Portfolio-LockedBox.png";
+import ComputerImage from "../../../assets/Portfolio-Computer.gif";
+import ProjectsImage from "../../../assets/Portfolio-Projects.png";
+import DigitalClockImage from "../../../assets/Portfolio-DigitalClock.png";
+import CVPaperImage from "../../../assets/Portfolio-CVPaper.png";
+import BachelorHatImage from "../../../assets/Portfolio-BachelorHat.png";
 
-const ObjectSection = forwardRef((props, ref) => {
-  const [noteState, setNoteState] = useState(true);
+import scripts from "../assets/scripts";
+
+const ObjectSection = (props, ref) => {
   const [noteText, setNoteText] = useState("");
   const [noteChildren, setNoteChildren] = useState(null);
+  const [noteVisibility, setNoteVisibility] = useState(false);
+
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
@@ -30,27 +33,7 @@ const ObjectSection = forwardRef((props, ref) => {
 
   useEffect(() => {
     if (password.toLowerCase() === "05I%AM%HERE19".toLowerCase()) {
-      setNoteText(
-        `📌 Interested In:\n\n` +
-          `🌲 Data Structures & Algorithms\n` +
-          `🖼️ Rendering Programming/Shaders (GLSL & HLSL)\n` +
-          `🕹️ Game Programming (Unity & Godot)\n` +
-          `➗ Game Mathematics\n` +
-          `🖌️ 2D Pixel Art (Aseprite)\n` +
-          `🎲 3D Sculpting/Modeling (Blender)\n` +
-          `🧠 Extended Reality - XR (VR/AR/MR)\n` +
-          `🗃️ Git\n\n` +
-          `🎈 Hobbies:\n\n` +
-          `📖 Books\n` +
-          `🏸 Badminton\n` +
-          `🏊🏻‍♂️ Swimming\n` +
-          `🍳 Cooking\n` +
-          `🎮 Games\n` +
-          `🎶 Musics\n\n` +
-          `🐾 Pets:\n\n` +
-          `🐶 Dogs\n` +
-          `😾 Cats`
-      );
+      setNoteText(scripts.OpenedBox);
       setNoteChildren(null);
     }
   }, [password]);
@@ -59,20 +42,76 @@ const ObjectSection = forwardRef((props, ref) => {
     <div id={props.id} className={props.className} ref={ref}>
       <div
         id="homepage"
-        className="flex flex-col col-start-1 row-start-1 col-span-3 justify-center items-center"
+        className="
+          row-start-1 col-start-1 row-span-1 col-span-3 
+          flex flex-col 
+          justify-center items-center
+        "
       >
         <Option option="Go home" onClick={() => navigate("/")} />
       </div>
       <Tool
-        row="row-start-2"
-        column="col-start-1"
-        tool={LockedBox}
+        id="bachelor-hat"
+        className="
+          row-start-2 col-start-1 row-span-1 col-span-1 
+          flex flex-col relative 
+          justify-center items-center
+        "
+        toolImage={BachelorHatImage}
+        toolWidth="w-24"
+        onClick={() => {
+          setNoteText(scripts.BachelorHat);
+          setNoteVisibility(true);
+        }}
+      />
+      <Tool
+        id="computer"
+        className="
+          row-start-2 col-start-2 row-span-1 col-span-1 
+          flex flex-col relative 
+          justify-center items-center
+        "
+        toolImage={ComputerImage}
         toolWidth="w-28"
         onClick={() => {
-          setNoteText(
-            `🔐 You need password to see this information!\n` +
-              `Hint: It's on the Homepage, try to "Select All"`
-          );
+          setNoteText(scripts.Computer);
+          setNoteVisibility(true);
+        }}
+      />
+      <Tool
+        id="digital-clock"
+        className="
+          row-start-2 col-start-3 row-span-1 col-span-1 
+          flex flex-col relative 
+          justify-center items-center
+        "
+        toolImage={DigitalClockImage}
+        toolWidth="w-[20.5vw] sm:w-[135px]"
+        toolProps="translate-y-[1px]"
+        onClick={() => {
+          setNoteText(scripts.DigitalClock);
+          setNoteVisibility(true);
+        }}
+      >
+        <DigitalClock
+          className="
+            w-[20.5vw] sm:w-[135px] px-0 sm:px-[0.5px] py-0 sm:py-[0.25px]
+            border-moonstone-blue border-solid border-[4px] sm:border-[5px]
+            text-beau-blue text-[2vw] sm:text-sm text-center select-none
+          "
+        />
+      </Tool>
+      <Tool
+        id="locked-box"
+        className="
+          row-start-3 col-start-1 row-span-1 col-span-1 
+          flex flex-col relative 
+          justify-center items-center
+        "
+        toolImage={LockedBoxImage}
+        toolWidth="w-20"
+        onClick={() => {
+          setNoteText(scripts.LockedBox);
           setNoteChildren(
             <input
               type="password"
@@ -80,88 +119,51 @@ const ObjectSection = forwardRef((props, ref) => {
               className="
                 flex flex-col
                 w-4/5 mt-8 p-2
-                text-center text-rainbow-indigo
+                text-rainbow-indigo text-center
               "
               placeholder="Enter password"
               onChange={handlePasswordChange}
               autoFocus
             />
           );
-          setNoteState(false);
+          setNoteVisibility(true);
         }}
       />
       <Tool
-        row="row-start-2"
-        column="col-start-2"
-        tool={Computer}
-        toolWidth="w-36"
-        onClick={() => {
-          setNoteText(
-            `🌟 Pursuing Career: Game Developer, especially major in Rendering\n` +
-              `⚙️ Using Engines: Unity Engine (mostly) and Godot Engine (sometimes)`
-          );
-          setNoteState(false);
-        }}
-      />
-      <Tool
-        row="row-start-2"
-        column="col-start-3"
-        tool={Projects}
-        toolWidth="w-36"
-        onClick={() => navigate("/projects")}
-      />
-      <Tool
-        row="row-start-3"
-        column="col-start-1"
-        tool={Clock}
-        toolWidth="w-[20vw] sm:w-[135px]"
-        toolProps="translate-y-[1px]"
-        children={
-          <DigitalClock
-            className="
-              w-[20vw] sm:w-[135px] px-0 sm:px-[0.5px] py-0 sm:py-[0.25px]
-              border-moonstone-blue border-solid border-[4px] sm:border-[5px]
-              text-beau-blue text-[2vw] sm:text-sm
-            "
-          />
-        }
-        onClick={() => {
-          setNoteText(`🕛 Timezone: Ho Chi Minh city, Vietnam (GMT+7)`);
-          setNoteState(false);
-        }}
-      />
-      <Tool
-        row="row-start-3"
-        column="col-start-2"
-        tool={CVPaper}
-        toolWidth="w-28"
+        id="cv-paper"
+        className="
+          row-start-3 col-start-2 row-span-1 col-span-1 
+          flex flex-col relative 
+          justify-center items-center
+        "
+        toolImage={CVPaperImage}
+        toolWidth="w-20"
         onClick={() => navigate("/cv")}
       />
       <Tool
-        row="row-start-3"
-        column="col-start-3"
-        tool={BachelorHat}
-        toolWidth="w-36"
-        onClick={() => {
-          setNoteText(
-            `🏫 Studying At: VNUHCM - University of Science (🎓 Bachelor's Degree - Software Engineer)\n` +
-              `🏢 Working At: None`
-          );
-          setNoteState(false);
-        }}
+        id="projects"
+        className="
+          row-start-3 col-start-3 row-span-1 col-span-1 
+          flex flex-col relative 
+          justify-center items-center
+        "
+        toolImage={ProjectsImage}
+        toolWidth="w-28"
+        onClick={() => navigate("/projects")}
       />
       <InformationNote
-        hidden={noteState}
         text={noteText}
-        children={noteChildren}
+        visibility={noteVisibility}
         onClick={() => {
           setNoteText("");
           setNoteChildren(null);
-          setNoteState(true);
+          setNoteVisibility(false);
         }}
-      />
+      >
+        {noteChildren}
+      </InformationNote>
     </div>
   );
-});
+};
 
-export default ObjectSection;
+export default forwardRef(ObjectSection);

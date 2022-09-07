@@ -1,26 +1,34 @@
 // React
 import { useState } from "react";
 
+// Libraries
+import classnames from "classnames";
+
 const Option = (props) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
       id="option"
-      className="p-2 text-cyan-azure hover:text-beau-blue"
+      className="
+        flex flex-row
+        justify-start items-start
+        text-cyan-azure hover:text-beau-blue
+      "
       onClick={props.onClick}
       onPointerEnter={() => setIsHovered(true)}
       onPointerLeave={() => setIsHovered(false)}
     >
-      <div id="label">
-        <span
-          id="indicator"
-          className={isHovered ? "text-beau-blue" : "text-rainbow-indigo"}
-        >
-          &gt;
-        </span>
-        {" " + props.option}
+      <div
+        id="indicator"
+        className={classnames(
+          "pr-2",
+          isHovered ? "text-beau-blue" : "text-rainbow-indigo"
+        )}
+      >
+        &gt;
       </div>
+      <div id="label">{props.option}</div>
     </div>
   );
 };

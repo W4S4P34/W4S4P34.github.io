@@ -2,16 +2,16 @@
 import { forwardRef } from "react";
 
 // Self-defined Components
-import OptionInstruction from "./OptionInstruction";
+import Instruction from "./Instruction";
 import Options from "./Options";
 
-const OptionSection = forwardRef((props, ref) => {
+const OptionSection = (props, ref) => {
   return (
-    <div id={props.id} className={props.className} ref={ref}>
-      <OptionInstruction />
+    <div ref={ref} id={props.id} className={props.className}>
+      <Instruction />
       <Options />
     </div>
   );
-});
+};
 
-export default OptionSection;
+export default forwardRef(OptionSection);

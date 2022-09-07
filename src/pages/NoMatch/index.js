@@ -4,8 +4,7 @@ const NoMatch = () => {
       id="no-match"
       className="flex flex-col flex-auto justify-center items-center"
     >
-      Oops, you're gonna lost if you're still keeping wandering like this! Let's
-      get back.
+      Oops, let's get back. Nothing to see here!
     </div>
   );
 };

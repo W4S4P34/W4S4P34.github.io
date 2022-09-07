@@ -33,7 +33,9 @@ body,
 
 html {
   /* Formats */
-  @apply bg-rainbow-indigo text-beau-blue font-pixel tracking-wider whitespace-normal;
+  @apply bg-rainbow-indigo;
+  @apply font-pixel text-beau-blue text-xs sm:text-sm md:text-base;
+  @apply leading-10 tracking-wider whitespace-normal;
 }
 
 #root {
@@ -49,4 +51,9 @@ html {
 .about-page-snap {
   /* Behaviours */
   @apply snap-mandatory snap-y overflow-y-scroll;
+}
+
+.lock-scroll {
+  /* Behaviours */
+  @apply overflow-hidden;
 }

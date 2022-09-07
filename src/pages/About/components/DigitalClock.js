@@ -9,9 +9,9 @@ const DigitalClock = (props) => {
   };
 
   useEffect(() => {
-    const timerId = setInterval(updateTime, 1000);
+    const timeInterval = setInterval(updateTime, 1000);
     return () => {
-      clearInterval(timerId);
+      clearInterval(timeInterval);
     };
   }, []);
 

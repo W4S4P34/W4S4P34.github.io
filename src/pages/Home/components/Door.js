@@ -4,9 +4,9 @@ import { useRef } from "react";
 // Libraries
 import { Link } from "react-router-dom";
 
-// Resources
-import DoorOpenedImage from "../../../assets/Portfolio-DoorOpened.png";
-import DoorClosedImage from "../../../assets/Portfolio-DoorClosed.png";
+// Assets
+import OpenedDoorImage from "../../../assets/Portfolio-OpenedDoor.png";
+import ClosedDoorImage from "../../../assets/Portfolio-ClosedDoor.png";
 
 const Door = (props) => {
   const doorRef = useRef(null);
@@ -16,35 +16,33 @@ const Door = (props) => {
   };
 
   return (
-    <div id="door" className="flex flex-col justify-center items-center">
-      <Link
-        id="label"
-        to={getLinkFromName(props.name)}
-        onPointerEnter={() => {
-          doorRef.current.setAttribute("src", DoorOpenedImage);
-        }}
-        onPointerLeave={() => {
-          doorRef.current.setAttribute("src", DoorClosedImage);
-        }}
-        className="w-full p-4"
-      >
-        {props.name}
-      </Link>
-      <Link id="image" to={getLinkFromName(props.name)}>
+    <Link
+      id="door"
+      className="
+        flex flex-col
+        gap-y-4
+        justify-center items-center
+      "
+      to={getLinkFromName(props.name)}
+      onPointerEnter={() => {
+        if (doorRef.current === null) return;
+        doorRef.current.setAttribute("src", OpenedDoorImage);
+      }}
+      onPointerLeave={() => {
+        if (doorRef.current === null) return;
+        doorRef.current.setAttribute("src", ClosedDoorImage);
+      }}
+    >
+      <div id="label">{props.name}</div>
+      <div id="image">
         <img
           ref={doorRef}
-          src={DoorClosedImage}
-          onPointerEnter={(event) =>
-            (event.currentTarget.src = DoorOpenedImage)
-          }
-          onPointerLeave={(event) =>
-            (event.currentTarget.src = DoorClosedImage)
-          }
+          src={ClosedDoorImage}
           alt={props.name.concat(" Door")}
-          className="w-32 h-28 object-scale-down"
+          className="w-24 object-scale-down"
         />
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

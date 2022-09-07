@@ -5,9 +5,15 @@ import classnames from "classnames";
 import useTypedScript, { TypedPhase } from "../../../hooks/useTypedScript";
 
 const Greeting = () => {
-  const texts = ["Welcome to my portfolio", "You can choose ONE room to visit"];
+  const scripts = [
+    "Welcome to my portfolio",
+    "You can choose ONE room to visit",
+  ];
 
-  const { typedScript, typedPhase } = useTypedScript(texts, false);
+  const { typedScript, typedPhase } = useTypedScript({
+    scripts: scripts,
+    loop: false,
+  });
 
   return (
     <div

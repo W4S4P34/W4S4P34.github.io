@@ -4,17 +4,20 @@ import classnames from "classnames";
 // Self-defined Hooks
 import useTypedScript, { TypedPhase } from "../../../hooks/useTypedScript";
 
-const OptionInstruction = () => {
-  const texts = [
+const Instruction = () => {
+  const scripts = [
     "This is all about me, hope you will find something informative",
   ];
 
-  const { typedScript, typedPhase } = useTypedScript(texts, false);
+  const { typedScript, typedPhase } = useTypedScript({
+    scripts: scripts,
+    loop: false,
+  });
 
   return (
     <div
-      id="option-instruction"
-      className={classnames("w-full my-4 px-4", {
+      id="instruction"
+      className={classnames("w-full my-4 px-4 text-center select-none", {
         "end-cursor": typedPhase !== TypedPhase.Deleting,
         "blinking-fx": typedPhase === TypedPhase.Pausing,
       })}
@@ -24,4 +27,4 @@ const OptionInstruction = () => {
   );
 };
 
-export default OptionInstruction;
+export default Instruction;

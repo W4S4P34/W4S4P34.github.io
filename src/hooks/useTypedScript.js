@@ -11,13 +11,13 @@ const TYPING_INTERVAL = 75;
 const PAUSING_INTERVAL = 2500;
 const DELETING_INTERVAL = 50;
 
-const useTypedScript = (
-  texts,
+const useTypedScript = ({
+  scripts,
   loop = true,
   typingInterval = TYPING_INTERVAL,
   pausingInterval = PAUSING_INTERVAL,
-  deletingInterval = DELETING_INTERVAL
-) => {
+  deletingInterval = DELETING_INTERVAL,
+}) => {
   const [typedScript, setTypedScript] = useState("");
   const [typedIndex, setTypedIndex] = useState(0);
   const [typedPhase, setTypedPhase] = useState(TypedPhase.Typing);
@@ -25,7 +25,7 @@ const useTypedScript = (
   useEffect(() => {
     switch (typedPhase) {
       case TypedPhase.Typing: {
-        const nextScript = texts[typedIndex].slice(0, typedScript.length + 1);
+        const nextScript = scripts[typedIndex].slice(0, typedScript.length + 1);
         if (typedScript === nextScript) {
           setTypedPhase(TypedPhase.Pausing);
           return;
@@ -38,11 +38,11 @@ const useTypedScript = (
       case TypedPhase.Deleting: {
         if (!typedScript) {
           const nextTypedIndex = typedIndex + 1;
-          setTypedIndex(texts[nextTypedIndex] ? nextTypedIndex : 0);
+          setTypedIndex(scripts[nextTypedIndex] ? nextTypedIndex : 0);
           setTypedPhase(TypedPhase.Typing);
           return;
         }
-        const nextRemaining = texts[typedIndex].slice(
+        const nextRemaining = scripts[typedIndex].slice(
           0,
           typedScript.length - 1
         );
@@ -53,14 +53,14 @@ const useTypedScript = (
       }
       case TypedPhase.Pausing:
       default:
-        if (loop === false && typedIndex === texts.length - 1) return;
+        if (loop === false && typedIndex === scripts.length - 1) return;
         const timeout = setTimeout(() => {
           setTypedPhase(TypedPhase.Deleting);
         }, pausingInterval);
         return () => clearTimeout(timeout);
     }
   }, [
-    texts,
+    scripts,
     loop,
     typingInterval,
     pausingInterval,

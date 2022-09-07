@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 // Self-defined Components
 import Loading from "./components/Loading";
 
-// Resources
+// Assets
 import routes from "./pages/routes";
 
 const App = () => {
