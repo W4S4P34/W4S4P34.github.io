@@ -22,19 +22,18 @@ import scripts from "../assets/scripts";
 
 const ObjectSection = (props, ref) => {
   const [noteText, setNoteText] = useState("");
-  const [noteChildren, setNoteChildren] = useState(null);
   const [noteVisibility, setNoteVisibility] = useState(false);
 
+  const [passwordTrigger, setPasswordTrigger] = useState(false);
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const handlePasswordChange = (event) => setPassword(event.target.value);
-
   useEffect(() => {
     if (password.toLowerCase() === "05I%AM%HERE19".toLowerCase()) {
       setNoteText(scripts.OpenedBox);
-      setNoteChildren(null);
+      setPasswordTrigger(false);
+      setPassword("");
     }
   }, [password]);
 
@@ -112,21 +111,9 @@ const ObjectSection = (props, ref) => {
         toolWidth="w-20"
         onClick={() => {
           setNoteText(scripts.LockedBox);
-          setNoteChildren(
-            <input
-              type="password"
-              name="password"
-              className="
-                flex flex-col
-                w-4/5 mt-8 p-2
-                text-rainbow-indigo text-center
-              "
-              placeholder="Enter password"
-              onChange={handlePasswordChange}
-              autoFocus
-            />
-          );
           setNoteVisibility(true);
+          setPasswordTrigger(true);
+          setPassword("");
         }}
       />
       <Tool
@@ -156,11 +143,28 @@ const ObjectSection = (props, ref) => {
         visibility={noteVisibility}
         onClick={() => {
           setNoteText("");
-          setNoteChildren(null);
           setNoteVisibility(false);
+          setPasswordTrigger(false);
+          setPassword("");
         }}
       >
-        {noteChildren}
+        {passwordTrigger && (
+          <input
+            type="password"
+            name="password"
+            className="
+              flex flex-col
+              w-4/5 mt-8 p-2
+              text-rainbow-indigo text-center
+            "
+            placeholder="Enter Password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value.trim());
+            }}
+            autoFocus
+          />
+        )}
       </InformationNote>
     </div>
   );

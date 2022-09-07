@@ -1,7 +1,8 @@
 const scripts = {
   LockedBox:
     `🔐 You need password to see this information!\n` +
-    `Hint: Try "Selecting All" in Homepage`,
+    `Hint: Try "Selecting All" in Homepage\n` +
+    `Caution: Beware of your Unikey!`,
   OpenedBox:
     `📌 Interested In:\n` +
     `  🌲 Data Structures & Algorithms\n` +
