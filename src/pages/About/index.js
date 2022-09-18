@@ -32,6 +32,7 @@ const getElementBounds = (element) => {
   elementBounds.x2 = Math.trunc(rect.right);
   elementBounds.y1 = Math.trunc(rect.top);
   elementBounds.y2 = Math.trunc(rect.bottom);
+
   return elementBounds;
 };
 
@@ -77,6 +78,9 @@ const About = () => {
   const secondSectionRef = useRef(null);
 
   const handleVisibilityChange = useCallback(() => {
+    if (firstSectionRef.current === null || secondSectionRef.current === null)
+      return;
+
     const firstSectionVisibilityPercentage = getInsideViewportPercentage({
       element: firstSectionRef.current,
       increaseSpeed: 3,

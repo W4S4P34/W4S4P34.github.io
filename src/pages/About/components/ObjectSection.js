@@ -85,8 +85,7 @@ const ObjectSection = (props, ref) => {
           justify-center items-center
         "
         toolImage={DigitalClockImage}
-        toolWidth="w-[20.5vw] sm:w-[135px]"
-        toolProps="translate-y-[1px]"
+        toolWidth="w-28"
         onClick={() => {
           setNoteText(scripts.DigitalClock);
           setNoteVisibility(true);
@@ -94,8 +93,8 @@ const ObjectSection = (props, ref) => {
       >
         <DigitalClock
           className="
-            w-[20.5vw] sm:w-[135px] px-0 sm:px-[0.5px] py-0 sm:py-[0.25px]
-            border-moonstone-blue border-solid border-[4px] sm:border-[5px]
+            absolute top-[50%] left-[50%]
+            translate-x-[-50%] translate-y-[-95%] sm:translate-y-[-145%]
             text-beau-blue text-[2vw] sm:text-sm text-center select-none
           "
         />
