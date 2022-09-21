@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 // Assets
 import InspectPlateImage from "../../../assets/Portfolio-InspectPlate.png";
+import ResumePDF from "../../../assets/Resume.pdf";
 
 const getToolName = (tool) => {
   let result = tool.replace("-", " ");
@@ -27,7 +28,7 @@ const Tool = (props) => {
       <Link
         id={props.id}
         className={props.className}
-        to="/cv.pdf"
+        to={ResumePDF}
         target="_blank"
         rel="noopener noreferrer"
         onPointerEnter={() => {
