@@ -3,6 +3,7 @@ import { useRef } from "react";
 
 // Libraries
 import classnames from "classnames";
+import { Link } from "react-router-dom";
 
 // Assets
 import InspectPlateImage from "../../../assets/Portfolio-InspectPlate.png";
@@ -21,49 +22,97 @@ const getToolName = (tool) => {
 const Tool = (props) => {
   const inspectPlate = useRef(null);
 
-  return (
-    <div
-      id={props.id}
-      className={props.className}
-      onPointerEnter={() => {
-        if (inspectPlate.current === null) return;
-        inspectPlate.current.classList.remove("hidden");
-      }}
-      onPointerLeave={() => {
-        if (inspectPlate.current === null) return;
-        inspectPlate.current.classList.add("hidden");
-      }}
-      onClick={props.onClick}
-    >
-      <img
-        id="tool-image"
-        src={props.toolImage}
-        alt="Tool"
-        className={classnames(
-          props.toolWidth ? props.toolWidth : "",
-          props.toolHeight ? props.toolHeight : "",
-          props.toolProps ? props.toolProps : "",
-          "object-scale-down"
-        )}
-      />
-      {props.children}
-      <div id="tool-label" className="pt-2 text-center">
-        {getToolName(props.id)}
-      </div>
-      <img
-        id="inspect-image"
-        ref={inspectPlate}
-        src={InspectPlateImage}
-        alt="Inspect Plate"
-        className="
+  if (props.id === "cv-paper") {
+    return (
+      <Link
+        id={props.id}
+        className={props.className}
+        to="/cv.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        onPointerEnter={() => {
+          if (inspectPlate.current === null) return;
+          inspectPlate.current.classList.remove("hidden");
+        }}
+        onPointerLeave={() => {
+          if (inspectPlate.current === null) return;
+          inspectPlate.current.classList.add("hidden");
+        }}
+      >
+        <img
+          id="tool-image"
+          src={props.toolImage}
+          alt="Tool"
+          className={classnames(
+            props.toolWidth ? props.toolWidth : "",
+            props.toolHeight ? props.toolHeight : "",
+            props.toolProps ? props.toolProps : "",
+            "object-scale-down"
+          )}
+        />
+        {props.children}
+        <div id="tool-label" className="pt-2 text-center">
+          {getToolName(props.id)}
+        </div>
+        <img
+          id="inspect-image"
+          ref={inspectPlate}
+          src={InspectPlateImage}
+          alt="Inspect Plate"
+          className="
           absolute top-[50%] left-[50%]
           translate-x-[-50%] translate-y-[-50%]
           w-32
           object-scale-down hidden
         "
-      />
-    </div>
-  );
+        />
+      </Link>
+    );
+  } else {
+    return (
+      <div
+        id={props.id}
+        className={props.className}
+        onPointerEnter={() => {
+          if (inspectPlate.current === null) return;
+          inspectPlate.current.classList.remove("hidden");
+        }}
+        onPointerLeave={() => {
+          if (inspectPlate.current === null) return;
+          inspectPlate.current.classList.add("hidden");
+        }}
+        onClick={props.onClick}
+      >
+        <img
+          id="tool-image"
+          src={props.toolImage}
+          alt="Tool"
+          className={classnames(
+            props.toolWidth ? props.toolWidth : "",
+            props.toolHeight ? props.toolHeight : "",
+            props.toolProps ? props.toolProps : "",
+            "object-scale-down"
+          )}
+        />
+        {props.children}
+        <div id="tool-label" className="pt-2 text-center">
+          {getToolName(props.id)}
+        </div>
+        <img
+          id="inspect-image"
+          ref={inspectPlate}
+          src={InspectPlateImage}
+          alt="Inspect Plate"
+          className="
+          absolute top-[50%] left-[50%]
+          translate-x-[-50%] translate-y-[-50%]
+          w-32
+          object-scale-down hidden
+        "
+        />
+      </div>
+    );
+  }
 };
 
 export default Tool;

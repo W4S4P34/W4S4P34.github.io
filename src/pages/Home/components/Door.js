@@ -23,7 +23,13 @@ const Door = (props) => {
         gap-y-4
         justify-center items-center
       "
-      to={getLinkFromName(props.name)}
+      to={
+        getLinkFromName(props.name) !== "/cv"
+          ? getLinkFromName(props.name)
+          : "/cv.pdf"
+      }
+      target={getLinkFromName(props.name) !== "/cv" ? null : "_blank"}
+      rel={getLinkFromName(props.name) !== "/cv" ? null : "noopener noreferrer"}
       onPointerEnter={() => {
         if (doorRef.current === null) return;
         doorRef.current.setAttribute("src", OpenedDoorImage);

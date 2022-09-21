@@ -94,7 +94,7 @@ const ObjectSection = (props, ref) => {
         <DigitalClock
           className="
             absolute top-[50%] left-[50%]
-            translate-x-[-50%] translate-y-[-95%] sm:translate-y-[-145%]
+            translate-x-[-50%] translate-y-[-145%] xs:translate-y-[-95%] sm:translate-y-[-145%]
             text-beau-blue text-[2vw] sm:text-sm text-center select-none
           "
         />
@@ -124,7 +124,6 @@ const ObjectSection = (props, ref) => {
         "
         toolImage={CVPaperImage}
         toolWidth="w-20"
-        onClick={() => navigate("/cv")}
       />
       <Tool
         id="projects"
