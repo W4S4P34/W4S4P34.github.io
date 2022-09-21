@@ -1,15 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.186cfc8b.css",
-    "main.js": "/static/js/main.ea0ca78d.js",
-    "static/media/Resume.pdf": "/static/media/Resume.4b5cf9711be6520907ee.pdf",
+    "main.js": "/static/js/main.cb3e8235.js",
     "static/media/Portfolio-Computer.gif": "/static/media/Portfolio-Computer.bd24db79a7352362611f.gif",
     "index.html": "/index.html",
     "main.186cfc8b.css.map": "/static/css/main.186cfc8b.css.map",
-    "main.ea0ca78d.js.map": "/static/js/main.ea0ca78d.js.map"
+    "main.cb3e8235.js.map": "/static/js/main.cb3e8235.js.map"
   },
   "entrypoints": [
     "static/css/main.186cfc8b.css",
-    "static/js/main.ea0ca78d.js"
+    "static/js/main.cb3e8235.js"
   ]
 }
