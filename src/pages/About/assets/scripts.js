@@ -27,7 +27,7 @@ const scripts = {
     `🌟 Pursuing Career: Game Developer, especially major in Rendering\n` +
     `⚙️ Using Engines: Unity Engine (mostly) and Godot Engine (sometimes)`,
   DigitalClock: `🕛 Timezone: Ho Chi Minh city, Vietnam (GMT+7)`,
-  BachelorHat: `🏫 Graduated At: VNUHCM - University of Science (🎓 Bachelor's Degree - Software Engineer)!`,
+  BachelorHat: `🏫 Graduated At: VNUHCM - University of Science (🎓 Bachelor's Degree - Software Engineer)`,
 };
 
 export default scripts;
