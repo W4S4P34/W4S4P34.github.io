@@ -2,58 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .end-cursor::after {
-    content: "_";
-  }
-
-  .end-cursor.blinking-fx::after {
-    animation: blink 1s step-start infinite;
-  }
-
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
-}
-
 * {
   /* Margins & Paddings */
   @apply m-0 p-0;
-}
-
-html,
-body,
-#root {
-  /* Sizes */
-  @apply w-full h-full;
-  @apply min-w-fit min-h-fit;
-}
-
-html {
-  /* Formats */
-  @apply bg-rainbow-indigo;
-  @apply font-pixel text-beau-blue text-xs sm:text-sm md:text-base;
-  @apply leading-10 tracking-wider whitespace-normal;
-}
-
-#root {
-  /* Display */
-  @apply flex flex-col;
-}
-
-.about-page-smooth {
-  /* Behaviours */
-  @apply scroll-smooth;
-}
-
-.about-page-snap {
-  /* Behaviours */
-  @apply snap-mandatory snap-y overflow-y-scroll;
-}
-
-.lock-scroll {
-  /* Behaviours */
-  @apply overflow-hidden;
 }

@@ -1,10 +1,10 @@
 // React
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
 // Libraries
 import $ from "jquery";
-import { BrowserRouter } from "react-router-dom";
 
 // Self-defined Components
 import App from "./App";

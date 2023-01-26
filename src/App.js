@@ -1,7 +1,5 @@
 // React
 import { Suspense } from "react";
-
-// Libraries
 import { Routes, Route } from "react-router-dom";
 
 // Self-defined Components
