@@ -10,12 +10,6 @@
    */
 
 /*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-
-/*!
  * jQuery JavaScript Library v3.6.1
  * https://jquery.com/
  *
@@ -70,7 +64,7 @@
  */
 
 /**
- * React Router DOM v6.3.0
+ * React Router v6.3.0
  *
  * Copyright (c) Remix Software Inc.
  *
