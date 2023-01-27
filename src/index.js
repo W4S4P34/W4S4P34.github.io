@@ -11,6 +11,7 @@ import App from "./App";
 
 // CSS
 import "./index.css";
+import "./fonts.css";
 
 const root = ReactDOM.createRoot($("#root").get(0));
 root.render(
