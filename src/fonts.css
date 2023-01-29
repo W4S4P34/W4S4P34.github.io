@@ -1,90 +1,14 @@
 @font-face {
-  font-family: "Kanit-Black";
-  src: url("../assets/fonts/kanit/Kanit-Black.ttf") format("truetype");
+  font-family: "Kanit";
+  src: url("./assets/fonts/Kanit.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Kanit-BlackItalic";
-  src: url("../assets/fonts/kanit/Kanit-BlackItalic.ttf") format("truetype");
+  font-family: "American Captain";
+  src: url("./assets/fonts/AmericanCaptain.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Kanit-Bold";
-  src: url("../assets/fonts/kanit/Kanit-Bold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-BoldItalic";
-  src: url("../assets/fonts/kanit/Kanit-BoldItalic.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-ExtraBold";
-  src: url("../assets/fonts/kanit/Kanit-ExtraBold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-ExtraBoldItalic";
-  src: url("../assets/fonts/kanit/Kanit-ExtraBoldItalic.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-ExtraLight";
-  src: url("../assets/fonts/kanit/Kanit-ExtraLight.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-ExtraLightItalic";
-  src: url("../assets/fonts/kanit/Kanit-ExtraLightItalic.ttf")
-    format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-Italic";
-  src: url("../assets/fonts/kanit/Kanit-Italic.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-Light";
-  src: url("../assets/fonts/kanit/Kanit-Light.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-LightItalic";
-  src: url("../assets/fonts/kanit/Kanit-LightItalic.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-Medium";
-  src: url("../assets/fonts/kanit/Kanit-Medium.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-MediumItalic";
-  src: url("../assets/fonts/kanit/Kanit-MediumItalic.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-Regular";
-  src: url("../assets/fonts/kanit/Kanit-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-SemiBold";
-  src: url("../assets/fonts/kanit/Kanit-SemiBold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-SemiBoldItalic";
-  src: url("../assets/fonts/kanit/Kanit-SemiBoldItalic.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-Thin";
-  src: url("../assets/fonts/kanit/Kanit-Thin.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Kanit-ThinItalic";
-  src: url("../assets/fonts/kanit/Kanit-ThinItalic.ttf") format("truetype");
+  font-family: "Javanica";
+  src: url("./assets/fonts/Javanica.ttf") format("truetype");
 }

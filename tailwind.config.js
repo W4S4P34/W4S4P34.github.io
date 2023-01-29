@@ -6,7 +6,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        kanit: ["Kanit-Regular", ...defaultTheme.fontFamily.sans],
+        american: ["American Captain", ...defaultTheme.fontFamily.sans],
+        javanica: ["Javanica", ...defaultTheme.fontFamily.sans],
+        kanit: ["Kanit", ...defaultTheme.fontFamily.sans],
       },
     },
   },
