@@ -2,7 +2,7 @@ import globals from 'globals';
 import pluginJs from '@eslint/js';
 import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js';
 
-export default [
+const eslintConfiguration = [
 	pluginJs.configs.recommended,
 	pluginReactConfig,
 	{
@@ -17,3 +17,5 @@ export default [
 		},
 	},
 ];
+
+export default eslintConfiguration;
