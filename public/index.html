@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
+		<meta
+			name="description"
+			content="W4S4P34's Portfolio" />
+
+		<link
+			rel="icon"
+			href="%PUBLIC_URL%/favicon.ico" />
+		<title>W4S4P34</title>
+
+		<!-- JS -->
+		<script type="text/javascript">
+			((url) => {
+				if (url.search[1] === '/') {
+					var decodedSegment = url.search
+						.slice(1)
+						.split('&')
+						.map((string_) => string_.replace(/~and~/g, '&'))
+						.join('?');
+					window.history.replaceState(
+						null,
+						null,
+						url.pathname.slice(0, -1) + decodedSegment + url.hash,
+					);
+				}
+			})(window.location);
+		</script>
+	</head>
+
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="root"></div>
+	</body>
+</html>
